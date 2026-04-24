@@ -9,15 +9,10 @@ use components::cv::Cv;
 
 #[derive(Clone, Routable, PartialEq)]
 pub enum Route {
-    #[at("/")]
-    Home,
-    #[at("/projects")]
-    Projects,
-    #[at("/cv")]
-    Cv,
-    #[not_found]
-    #[at("/404")]
-    NotFound,
+    #[at("/")] Home,
+    #[at("/projects")] Projects,
+    #[at("/cv")] Cv,
+    #[not_found] #[at("/404")] NotFound,
 }
 
 #[derive(Clone, Copy, PartialEq)]
@@ -45,13 +40,9 @@ fn app() -> Html {
     html! {
         <HashRouter>
             <Nav lang={*lang} on_toggle={on_toggle_lang} />
-            <main>
-                <Switch<Route> render={move |r| switch(r, *lang)} />
-            </main>
+            <Switch<Route> render={move |r| switch(r, *lang)} />
         </HashRouter>
     }
 }
 
-fn main() {
-    yew::Renderer::<App>::new().render();
-}
+fn main() { yew::Renderer::<App>::new().render(); }

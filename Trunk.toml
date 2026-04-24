@@ -1,7 +1,7 @@
 [build]
 target = "index.html"
-# 這裡必須跟你的 GitHub Repository 名字一模一樣
-public_url = "/rust-portfolio/"
+# 改成相對路徑，這樣不論倉庫名稱是什麼，它都能抓到正確的 .wasm
+public_url = "./"
 
 [serve]
 port = 8080
