@@ -1,0 +1,11 @@
+[build]
+target = "index.html"
+
+[serve]
+port = 8080
+
+[clean]
+# GitHub Pages 的路徑通常是 /repo-name/
+# 請將下面的 my-rust-portfolio 換成你的 Repository 名稱
+# 如果你是用 <username>.github.io 這種個人首頁，路徑請設為 "/"
+public_url = "/my-rust-portfolio/"

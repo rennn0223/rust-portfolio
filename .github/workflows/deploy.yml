@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 或是你預設的主分支名稱，例如 master
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Install Trunk
+        run: |
+          wget -qO- https://github.com/trunk-rs/trunk/releases/latest/download/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
+          chmod +x trunk
+          # Move trunk to a directory in PATH
+          sudo mv trunk /usr/local/bin/
+
+      - name: Build with Trunk
+        # 這是最關鍵的一步，trunk 會讀取 Trunk.toml 進行編譯
+        run: trunk build --release
+
+      - name: Create 404.html for SPA Routing
+        # GitHub Pages 預設不支持 Single Page Application 的前端路由
+        # 將 index.html 複製為 404.html，可以讓 GitHub Pages 將所有未知的路徑導回我們的 Yew 應用程式處理
+        run: cp dist/index.html dist/404.html
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist  # Trunk 預設將編譯好的檔案放在 dist 資料夾
+          branch: gh-pages # 這是發布到 GitHub Pages 的專屬分支
