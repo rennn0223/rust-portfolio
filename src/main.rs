@@ -19,18 +19,19 @@ pub enum Route {
 pub enum Language { En, Zh }
 
 fn switch(routes: Route, lang: Language) -> Html {
-    match routes {
+    let content = match routes {
         Route::Home => html! { <Home {lang} /> },
         Route::Projects => html! { <Projects {lang} /> },
         Route::Cv => html! { <Cv {lang} /> },
         Route::NotFound => html! { <Home {lang} /> },
-    }
+    };
+    html! { <div class="page-transition">{ content }</div> }
 }
 
 #[function_component(App)]
 fn app() -> Html {
     let lang = use_state(|| Language::En);
-    let on_toggle_lang = {
+    let on_toggle = {
         let lang = lang.clone();
         Callback::from(move |_| {
             lang.set(if *lang == Language::En { Language::Zh } else { Language::En });
@@ -39,10 +40,10 @@ fn app() -> Html {
 
     html! {
         <HashRouter>
-            <Nav lang={*lang} on_toggle={on_toggle_lang} />
-            <div style="padding-top: 80px;">
+            <Nav lang={*lang} on_toggle={on_toggle} />
+            <main style="padding-top: 80px;">
                 <Switch<Route> render={move |r| switch(r, *lang)} />
-            </div>
+            </main>
         </HashRouter>
     }
 }
