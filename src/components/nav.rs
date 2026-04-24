@@ -11,16 +11,17 @@ pub struct NavProps {
 #[function_component(Nav)]
 pub fn nav(props: &NavProps) -> Html {
     let is_en = props.lang == Language::En;
-    let nav_style = "display: flex; justify-content: center; align-items: center; gap: clamp(10px, 3vw, 40px); padding: 20px; background: rgba(0,0,0,0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); position: fixed; width: 100%; top: 0; z-index: 1001; flex-wrap: wrap;";
-    let link_style = "color: #fff; text-decoration: none; font-weight: 600; opacity: 0.8; font-size: 0.9rem; letter-spacing: 2px; cursor: pointer;";
-    let btn_style = "background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold; margin-left: auto;";
+    let nav_style = "display: flex; justify-content: center; align-items: center; gap: clamp(15px, 4vw, 50px); padding: 15px 30px; background: rgba(5,5,5,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); position: fixed; width: 100%; top: 0; z-index: 2000;";
+    let link_style = "color: #fff; text-decoration: none; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; opacity: 0.7; transition: 0.3s; cursor: pointer;";
 
     html! {
         <nav style={nav_style}>
-            <Link<Route> to={Route::Home}><span style={link_style}>{ if is_en { "/HOME" } else { "/首頁" } }</span></Link<Route>>
-            <Link<Route> to={Route::Projects}><span style={link_style}>{ if is_en { "/PROJECTS" } else { "/深度專案" } }</span></Link<Route>>
-            <Link<Route> to={Route::Cv}><span style={link_style}>{ if is_en { "/EXPERIENCE" } else { "/職涯故事" } }</span></Link<Route>>
-            <button onclick={props.on_toggle.clone()} style={btn_style}>{ "EN / 中文" }</button>
+            <Link<Route> to={Route::Home}><span class="nav-link" style={link_style}>{ if is_en { "HOME" } else { "首頁" } }</span></Link<Route>>
+            <Link<Route> to={Route::Projects}><span class="nav-link" style={link_style}>{ if is_en { "TECH" } else { "技術專案" } }</span></Link<Route>>
+            <Link<Route> to={Route::Cv}><span class="nav-link" style={link_style}>{ if is_en { "JOURNEY" } else { "歷程" } }</span></Link<Route>>
+            <button onclick={props.on_toggle.clone()} style="background: var(--primary); color: #fff; border: none; padding: 6px 15px; border-radius: 20px; font-weight: 900; font-size: 0.7rem; cursor: pointer; margin-left: auto;">
+                { if is_en { "ZH" } else { "EN" } }
+            </button>
         </nav>
     }
 }

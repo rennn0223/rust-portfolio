@@ -40,7 +40,9 @@ fn app() -> Html {
     html! {
         <HashRouter>
             <Nav lang={*lang} on_toggle={on_toggle_lang} />
-            <Switch<Route> render={move |r| switch(r, *lang)} />
+            <div style="padding-top: 80px;">
+                <Switch<Route> render={move |r| switch(r, *lang)} />
+            </div>
         </HashRouter>
     }
 }
