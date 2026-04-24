@@ -11,44 +11,36 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; }
         
-        /* 炫技 1: 背景掃描網格 */
+        /* 背景格線 */
         body::before { 
-            content: ""; position: fixed; width: 100vw; height: 100vh; 
+            content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
             background-image: radial-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px); 
-            background-size: 30px 30px; z-index: -1; 
+            background-size: 30px 30px; z-index: -2; 
         }
 
-        /* 炫技 2: CRT 掃描線特效 (Overlay) */
+        /* CRT 掃描特效 (這層會讓畫面看起來超硬核) */
         body::after {
             content: " ";
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
+            position: fixed; top: 0; left: 0; bottom: 0; right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            z-index: 9999;
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            z-index: 1000;
             background-size: 100% 3px, 3px 100%;
             pointer-events: none;
         }
 
-        /* 動畫類別 */
         @keyframes title-glow {
             from { text-shadow: 0 0 10px rgba(59, 130, 246, 0); transform: translateY(20px); opacity: 0; }
             to { text-shadow: 0 0 20px rgba(59, 130, 246, 0.6); transform: translateY(0); opacity: 1; }
         }
         .animate-in { animation: title-glow 1.2s ease-out forwards; }
-
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
-        .section-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 50px; border-left: 5px solid var(--primary); padding-left: 15px; }
-
-        @media (max-width: 768px) {
-            .section-title { font-size: 1.8rem; }
-        }
     </style>
-<link rel="modulepreload" href="/rust-portfolio/my-rust-portfolio-b0ca50146bedb9cc.js" crossorigin="anonymous" integrity="sha384-OY6tVjUpsFN7A+Qm2ZXUfFFRVBQKLuMSNm9lGqbbAGj6rQZQWtbkTvJRaHPlCqBa"><link rel="preload" href="/rust-portfolio/my-rust-portfolio-b0ca50146bedb9cc_bg.wasm" crossorigin="anonymous" integrity="sha384-fbv8vxib5S38b7km28EvP/Rbhv9v1kpkhMFIuPUvZUjHayraL9IT2VXeQghfW7HN" as="fetch" type="application/wasm"></head>
+<link rel="modulepreload" href="./my-rust-portfolio-ccc87d8fbbbb0eb8.js" crossorigin="anonymous" integrity="sha384-OY6tVjUpsFN7A+Qm2ZXUfFFRVBQKLuMSNm9lGqbbAGj6rQZQWtbkTvJRaHPlCqBa"><link rel="preload" href="./my-rust-portfolio-ccc87d8fbbbb0eb8_bg.wasm" crossorigin="anonymous" integrity="sha384-Izrit4F0SJmrarhYrKF0WuhT/mT9lWowUl3kVcbMReNzhff4i4TGvkSx+dgeb96E" as="fetch" type="application/wasm"></head>
 <body>
 <script type="module">
-import init, * as bindings from '/rust-portfolio/my-rust-portfolio-b0ca50146bedb9cc.js';
-const wasm = await init({ module_or_path: '/rust-portfolio/my-rust-portfolio-b0ca50146bedb9cc_bg.wasm' });
+import init, * as bindings from './my-rust-portfolio-ccc87d8fbbbb0eb8.js';
+const wasm = await init({ module_or_path: './my-rust-portfolio-ccc87d8fbbbb0eb8_bg.wasm' });
 
 
 window.wasmBindings = bindings;
