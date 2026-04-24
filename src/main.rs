@@ -7,7 +7,6 @@ use components::home::Home;
 use components::projects::Projects;
 use components::cv::Cv;
 
-// 路由定義不變
 #[derive(Clone, Routable, PartialEq)]
 pub enum Route {
     #[at("/")]
@@ -29,7 +28,7 @@ fn switch(routes: Route, lang: Language) -> Html {
         Route::Home => html! { <Home {lang} /> },
         Route::Projects => html! { <Projects {lang} /> },
         Route::Cv => html! { <Cv {lang} /> },
-        Route::NotFound => html! { <Home {lang} /> }, // 如果真的找不到，直接導回 Home 顯得專業
+        Route::NotFound => html! { <Home {lang} /> },
     }
 }
 
@@ -44,9 +43,9 @@ fn app() -> Html {
     };
 
     html! {
-        <HashRouter> // <-- 這裡改成 HashRouter 是關鍵
+        <HashRouter>
             <Nav lang={*lang} on_toggle={on_toggle_lang} />
-            <main class={if *lang == Language::En { "lang-en" } else { "lang-zh" }}>
+            <main>
                 <Switch<Route> render={move |r| switch(r, *lang)} />
             </main>
         </HashRouter>
