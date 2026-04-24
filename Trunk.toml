@@ -1,6 +1,6 @@
 [build]
 target = "index.html"
-# 確保打包時，所有檔案路徑都會加上你的倉庫名稱
+# 這裡必須跟你的 GitHub Repository 名字一模一樣
 public_url = "/rust-portfolio/"
 
 [serve]
