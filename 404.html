@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHU-JEN LIN | Systems Architect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #3b82f6; --accent: #10b981; --bg: #050505; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; }
+        body::before { content: ""; position: fixed; width: 100vw; height: 100vh; background-image: radial-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px); background-size: 30px 30px; z-index: -1; }
+        
+        /* 語言切換動畫邏輯 */
+        body.lang-en .lang-zh { display: none !important; }
+        body.lang-zh .lang-en { display: none !important; }
+        
+        /* 全域卡片與標題樣式 */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        .section-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 50px; text-transform: uppercase; border-left: 5px solid var(--primary); padding-left: 15px; }
+        
+        @media (max-width: 768px) {
+            .section-title { font-size: 1.8rem; }
+        }
+    </style>
+<link rel="modulepreload" href="/my-rust-portfolio-aa841e96c41d42d6.js" crossorigin="anonymous" integrity="sha384-WLMUVguuyiSYkX3Lz0cHl8qA/h/vr8WJPad2kAknX/6wGH4aKmdS+antPd7aDSe4"><link rel="preload" href="/my-rust-portfolio-aa841e96c41d42d6_bg.wasm" crossorigin="anonymous" integrity="sha384-dWLBIT/m1VlLP0FfK6rP5R3ebf3DooDAvCPxq3IiwrdBP+5Y0o+nseQ2p6adNbYN" as="fetch" type="application/wasm"></head>
+<body>
+<script type="module">
+import init, * as bindings from '/my-rust-portfolio-aa841e96c41d42d6.js';
+const wasm = await init({ module_or_path: '/my-rust-portfolio-aa841e96c41d42d6_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+</html>
