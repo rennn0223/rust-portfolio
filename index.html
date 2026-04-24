@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHU-JEN LIN | Systems Architect</title>
+    <title>LIN SHU-JEN | Systems Architect</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -11,7 +11,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; }
 
-        /* 背景：細緻動態網格 */
+        /* 背景：矩陣網格 */
         body::before { 
             content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
             background-image: radial-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px); 
@@ -19,24 +19,29 @@
         }
 
         /* 掃描線效果 */
+        @keyframes scan { from { top: -10%; } to { top: 110%; } }
         body::after {
-            content: " "; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
-            z-index: 9999; background-size: 100% 3px, 3px 100%; pointer-events: none;
+            content: ""; position: fixed; width: 100%; height: 5px; 
+            background: rgba(59, 130, 246, 0.2); 
+            box-shadow: 0 0 20px var(--primary);
+            z-index: 9999; animation: scan 10s linear infinite; pointer-events: none;
         }
+
+        /* 打字機效果 */
+        .typing { overflow: hidden; border-right: .15em solid var(--accent); white-space: nowrap; 
+                   letter-spacing: .15em; animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite; }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
 
         /* 高階進場動畫 */
         @keyframes pageFade {
-            0% { opacity: 0; transform: translateY(15px) scale(0.99); filter: blur(8px); }
-            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+            0% { opacity: 0; transform: translateY(15px); filter: blur(5px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
-        .page-transition { animation: pageFade 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .page-transition { animation: pageFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        
-        /* 玻璃擬態 */
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; transition: 0.3s; }
+        .glass:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body></body>
