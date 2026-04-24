@@ -1,11 +1,12 @@
 [build]
 target = "index.html"
-# 這是確保 GitHub Pages 能找到 .wasm 的關鍵
+# 這裡必須對應你的倉庫名稱
 public_url = "/rust-portfolio/"
 
 [serve]
 port = 8080
 
+# 這是讓圖片顯示的核心指令
 [[hooks]]
 stage = "post_build"
 command = "sh"

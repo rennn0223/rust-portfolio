@@ -6,7 +6,7 @@ pub fn projects(props: &super::home::PageProps) -> Html {
     let is_en = props.lang == Language::En;
     let card_class = "glass page-transition";
     let card_style = "padding: 25px; display: flex; flex-direction: column; gap: 15px; overflow: hidden; height: 100%; border-radius: 16px;";
-    let img_style = "width: 100%; height: 240px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);";
+    let img_style = "width: 100%; height: 240px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: #111;";
     let tag_style = "font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--primary); border: 1px solid var(--primary); padding: 2px 8px; border-radius: 4px;";
 
     html! {
@@ -25,11 +25,8 @@ pub fn projects(props: &super::home::PageProps) -> Html {
                     </div>
                     <h3 style="font-size: 1.5rem; font-weight: 900; color: var(--accent);">{ if is_en { "GTC 2026: Ackermann DT" } else { "GTC 2026：阿克曼數位孿生" } }</h3>
                     <p style="color: #bbb; font-size: 0.95rem; line-height: 1.6;">
-                        { if is_en { 
-                            "Exhibited at DGX Spark. Features real-time Alpamayo sync logic. Personally signed by CEO Jensen Huang." 
-                        } else { 
-                            "於 DGX Spark 攤位展出。整合 Alpamayo 實時同步邏輯，專案榮獲執行長黃仁勳親筆簽名肯定。" 
-                        } }
+                        { if is_en { "Exhibited at DGX Spark. Features real-time Alpamayo sync logic. Personally signed by CEO Jensen Huang." } 
+                          else { "於 DGX Spark 攤位展出。整合 Alpamayo 實時同步邏輯，專案榮獲執行長黃仁勳親筆簽名肯定。" } }
                     </p>
                 </div>
 
@@ -42,11 +39,8 @@ pub fn projects(props: &super::home::PageProps) -> Html {
                     </div>
                     <h3 style="font-size: 1.5rem; font-weight: 900;">{ if is_en { "UC Berkeley BAIR Visit" } else { "柏克萊 AI 自駕中心訪問" } }</h3>
                     <p style="color: #bbb; font-size: 0.95rem; line-height: 1.6;">
-                        { if is_en { 
-                            "Technical discussion at the BAIR Lab regarding autonomous driving architectures and robotics synchronization." 
-                        } else { 
-                            "受邀至 UC Berkeley BAIR 實驗室，方針對自動駕駛架構與機器人同步技術進行深度學術交流。" 
-                        } }
+                        { if is_en { "Technical discussion at the BAIR Lab regarding autonomous driving architectures." } 
+                          else { "受邀至 UC Berkeley BAIR 實驗室，針對自動駕駛架構與機器人同步技術進行深度交流。" } }
                     </p>
                 </div>
 
@@ -59,11 +53,8 @@ pub fn projects(props: &super::home::PageProps) -> Html {
                     </div>
                     <h3 style="font-size: 1.5rem; font-weight: 900;">{ if is_en { "MSI HQ Integration" } else { "微星總部協同開發" } }</h3>
                     <p style="color: #bbb; font-size: 0.95rem; line-height: 1.6;">
-                        { if is_en { 
-                            "Resident implementation at MSI Innovation Center. Developed Omniverse Campus Patrol and MGX configurations." 
-                        } else { 
-                            "進駐微星創新前瞻中心，實作 Omniverse 校園巡檢系統並優化 MGX 伺服器運算環境。" 
-                        } }
+                        { if is_en { "Resident implementation at MSI Innovation Center. Developed Omniverse Campus Patrol and MGX configurations." } 
+                          else { "進駐微星創新前瞻中心，實作 Omniverse 校園巡檢系統並優化 MGX 伺服器運算環境。" } }
                     </p>
                 </div>
             </div>
