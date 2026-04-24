@@ -1,7 +1,6 @@
 [build]
 target = "index.html"
-# 改成相對路徑，這樣不論倉庫名稱是什麼，它都能抓到正確的 .wasm
-public_url = "./"
+public_url = "/rust-portfolio/"
 
 [serve]
 port = 8080
