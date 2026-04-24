@@ -5,3 +5,8 @@ public_url = "/rust-portfolio/"
 
 [serve]
 port = 8080
+
+[[hooks]]
+stage = "post_build"
+command = "sh"
+command_arguments = ["-c", "cp -r assets dist/"]
