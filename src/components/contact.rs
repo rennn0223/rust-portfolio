@@ -13,10 +13,10 @@ pub fn contact(props: &super::home::PageProps) -> Html {
             <div class="glass" style={card_style}>
                 <div style="font-family: 'JetBrains Mono'; color: var(--accent); margin-bottom: 10px; font-size: 0.8rem;">{ "> INITIALIZING_COMMUNICATION_PROTOCOL..." }</div>
                 
-                <a href="mailto:rennn223@gmail.com" style={link_style}>{ "[ EMAIL: rennn223@gmail.com ]" }</a>
+                <a href="mailto:ren910223@gmail.com" style={link_style}>{ "[ EMAIL: ren910223@gmail.com ]" }</a>
                 <a href="https://github.com/rennn0223" target="_blank" style={link_style}>{ "[ GITHUB: rennn0223 ]" }</a>
-                <a href="tel:+8869XXXXXXXX" style={link_style}>{ "[ PHONE: +886-9XX-XXX-XXX ]" }</a>
-                <a href="https://blinq.me/u/rennn223" target="_blank" style={link_style}>{ "[ BLINQ: DIGITAL_CARD ]" }</a>
+                <a href="tel:+886902235732" style={link_style}>{ "[ PHONE: +886-902-235-732 ]" }</a>
+                <a href="https://s.blinq.me/cmnyeijmz02j70bs6uy3t9kdz?bs=icl" target="_blank" style={link_style}>{ "[ BLINQ: DIGITAL_CARD ]" }</a>
                 
                 <div style="margin-top: 20px; font-size: 0.85rem; color: #666; line-height: 1.6;">{ if is_en { "Available for Digital Twin & AI Infrastructure collaborations." } else { "隨時歡迎關於數位孿生與 AI 基礎設施的開發合作。" } }</div>
             </div>
