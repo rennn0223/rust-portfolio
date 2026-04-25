@@ -22,7 +22,7 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
     html! {
         <div class="container" style="padding: 100px 24px;">
             <h2 style="font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 900; margin-bottom: 50px; letter-spacing: -2px;">
-                { if is_en { "SYSTEM_CREDENTIALS" } else { "專業認證與授權" } }
+                { if is_en { "CREDENTIALS" } else { "專業認證與授權" } }
             </h2>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
