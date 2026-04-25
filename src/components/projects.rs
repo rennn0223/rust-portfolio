@@ -5,8 +5,8 @@ use crate::Language;
 pub fn projects(props: &super::home::PageProps) -> Html {
     let is_en = props.lang == Language::En;
     let card_class = "glass";
-    let card_style = "padding: 25px; display: flex; flex-direction: column; gap: 15px; height: 100%;";
-    let img_style = "width: 100%; height: 240px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: #111;";
+    let card_style = "padding: 25px; display: flex; flex-direction: column; gap: 15px; height: 100%; border-radius: 16px;";
+    let img_style = "width: 100%; height: 240px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: #111;";
     let tag_style = "font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--primary); border: 1px solid rgba(59, 130, 246, 0.3); padding: 3px 8px; border-radius: 4px;";
 
     html! {
@@ -18,7 +18,8 @@ pub fn projects(props: &super::home::PageProps) -> Html {
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
                 /* GTC 2026 */
                 <div class={card_class} style={card_style}>
-                    <img src="assets/signiture.jpg" alt="Jensen Huang Signature" style={img_style} />
+                    // 這裡改成了 .jpeg
+                    <img src="assets/signiture.jpeg" alt="Jensen Huang Signature" style={img_style} />
                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                         <span style={tag_style}>{ "NVIDIA_GTC" }</span>
                         <span style={tag_style}>{ "SIGNATURE" }</span>
@@ -32,7 +33,8 @@ pub fn projects(props: &super::home::PageProps) -> Html {
 
                 /* UC Berkeley BAIR */
                 <div class={card_class} style={card_style}>
-                    <img src="assets/UCBerkeley.jpg" alt="UC Berkeley BAIR" style={img_style} />
+                    // 這裡改成了 .jpeg
+                    <img src="assets/UCBerkeley.jpeg" alt="UC Berkeley BAIR" style={img_style} />
                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                         <span style={tag_style}>{ "RESEARCH" }</span>
                         <span style={tag_style}>{ "AUTONOMOUS" }</span>
@@ -46,7 +48,8 @@ pub fn projects(props: &super::home::PageProps) -> Html {
 
                 /* MSI Collaboration */
                 <div class={card_class} style={card_style}>
-                    <img src="assets/MSI.jpg" alt="MSI Collaboration" style={img_style} />
+                    // 這裡改成了 .jpeg
+                    <img src="assets/MSI.jpeg" alt="MSI Collaboration" style={img_style} />
                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                         <span style={tag_style}>{ "INDUSTRIAL" }</span>
                         <span style={tag_style}>{ "OMNIVERSE" }</span>

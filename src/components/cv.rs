@@ -10,7 +10,6 @@ pub fn cv(props: &super::home::PageProps) -> Html {
 
     html! {
         <div class="container" style="padding: 100px 24px;">
-            /* 頂端聯絡方式與通用能力 */
             <div style="margin-bottom: 50px; display: flex; flex-wrap: wrap; gap: 15px;">
                 <a href="https://www.linkedin.com/in/rennn223" target="_blank" style={btn_style}>{ "LINKEDIN ↗" }</a>
                 <a href="https://certs.duolingo.com/tlegwwbno75h9itb" target="_blank" style={btn_style}>{ "DUOLINGO_ENGLISH_PRO ↗" }</a>
@@ -19,7 +18,6 @@ pub fn cv(props: &super::home::PageProps) -> Html {
             <h2 style="font-size: 3rem; font-weight: 900; margin-bottom: 60px;">{ if is_en { "SYSTEM_LOG" } else { "系統演進日誌" } }</h2>
             
             <div style="max-width: 900px;">
-                /* Phase 6 */
                 <div style={timeline_item}>
                     <div style={dot}></div>
                     <div style="color: var(--primary); font-family: 'JetBrains Mono'; font-weight: bold;">{ "2026.03 - PRESENT" }</div>
@@ -32,10 +30,10 @@ pub fn cv(props: &super::home::PageProps) -> Html {
                     </div>
                 </div>
 
-                /* Phase 5 */
                 <div style={timeline_item}>
                     <div style={dot}></div>
-                    <img src="assets/GTC2026.jpg" alt="GTC 2026" style="width: 100%; max-width: 600px; border-radius: 8px; margin: 15px 0; border: 1px solid rgba(255,255,255,0.1);" />
+                    // 這裡改成了 .jpeg
+                    <img src="assets/GTC2026.jpeg" alt="GTC 2026" style="width: 100%; max-width: 600px; border-radius: 8px; margin: 15px 0; border: 1px solid rgba(255,255,255,0.1);" />
                     <div style="color: var(--primary); font-family: 'JetBrains Mono';">{ "2026.03" }</div>
                     <h3 style="margin: 10px 0;">{ if is_en { "NVIDIA GTC Exhibition & BAIR Lab" } else { "NVIDIA GTC 參展與柏克萊技術交流" } }</h3>
                     <p style="color: #bbb; line-height: 1.8;">
@@ -44,7 +42,6 @@ pub fn cv(props: &super::home::PageProps) -> Html {
                     </p>
                 </div>
 
-                /* Phase 4 */
                 <div style={timeline_item}>
                     <div style={dot}></div>
                     <div style="color: var(--primary); font-family: 'JetBrains Mono';">{ "2026.01 - 2026.02" }</div>
@@ -55,7 +52,6 @@ pub fn cv(props: &super::home::PageProps) -> Html {
                     </p>
                 </div>
 
-                /* Phase 3 */
                 <div style={timeline_item}>
                     <div style={dot}></div>
                     <div style="color: var(--primary); font-family: 'JetBrains Mono';">{ "2025.04 - 2025.12" }</div>
