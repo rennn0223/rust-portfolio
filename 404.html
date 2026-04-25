@@ -3,51 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIN SHU-JEN | Systems Architect</title>
+    <title>SHU-JEN LIN | Systems Architect</title>
+    
+    
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #3b82f6; --accent: #10b981; --bg: #030303; }
+        :root { --primary: #3b82f6; --accent: #10b981; --bg: #030303; --text: #f0f0f0; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-        /* 背景：矩陣網格 */
+        /* 高階背景：動態網格 */
         body::before { 
             content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
-            background-image: radial-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px); 
+            background-image: radial-gradient(rgba(59, 130, 246, 0.12) 1px, transparent 1px); 
             background-size: 40px 40px; z-index: -2; 
         }
 
-        /* 掃描線效果 */
-        @keyframes scan { from { top: -10%; } to { top: 110%; } }
-        body::after {
-            content: ""; position: fixed; width: 100%; height: 5px; 
-            background: rgba(59, 130, 246, 0.2); 
-            box-shadow: 0 0 20px var(--primary);
-            z-index: 9999; animation: scan 10s linear infinite; pointer-events: none;
-        }
-
-        /* 打字機效果 */
-        .typing { overflow: hidden; border-right: .15em solid var(--accent); white-space: nowrap; 
-                   letter-spacing: .15em; animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite; }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
-
-        /* 高階進場動畫 */
+        /* 順滑的進場動畫 */
         @keyframes pageFade {
             0% { opacity: 0; transform: translateY(15px); filter: blur(5px); }
             100% { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
-        .page-transition { animation: pageFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .page-transition { animation: pageFade 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
 
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; transition: 0.3s; }
-        .glass:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* 玻璃擬態高階卡片 */
+        .glass { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 0.06); 
+            border-radius: 16px; 
+            transition: all 0.4s ease; 
+        }
+        .glass:hover { 
+            border-color: rgba(59, 130, 246, 0.5); 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
+        }
     </style>
-<link rel="modulepreload" href="/rust-portfolio/rust-portfolio-c4aea8b0394478d7.js" crossorigin="anonymous" integrity="sha384-IfqxKe1cA8Ag/YW+GOSIt3ppXTAOg8jr8geXizsWACq6CmDGnopWWNaxlc2KCEig"><link rel="preload" href="/rust-portfolio/rust-portfolio-c4aea8b0394478d7_bg.wasm" crossorigin="anonymous" integrity="sha384-yn79ve4Wci8bHGhep6/CPoxznqUjMMqArqAGunEjl1h5cPDKXHXP6Ct+l4qMH6dY" as="fetch" type="application/wasm"></head>
+<link rel="modulepreload" href="/rust-portfolio/rust-portfolio-9df0fe199efa3bdb.js" crossorigin="anonymous" integrity="sha384-uBJVxRH1Q+Aml25TZooffn98hdAoe5xDONDvL60pN04oJzmmVOo0Xc6AL/w6uUyu"><link rel="preload" href="/rust-portfolio/rust-portfolio-9df0fe199efa3bdb_bg.wasm" crossorigin="anonymous" integrity="sha384-vG53TxyI1S0MpbmVWFPn3VamQhVCTstled22rF8SZAvnAsPlO1TrWmSF8AAyVUtH" as="fetch" type="application/wasm"></head>
 <body>
 <script type="module">
-import init, * as bindings from '/rust-portfolio/rust-portfolio-c4aea8b0394478d7.js';
-const wasm = await init({ module_or_path: '/rust-portfolio/rust-portfolio-c4aea8b0394478d7_bg.wasm' });
+import init, * as bindings from '/rust-portfolio/rust-portfolio-9df0fe199efa3bdb.js';
+const wasm = await init({ module_or_path: '/rust-portfolio/rust-portfolio-9df0fe199efa3bdb_bg.wasm' });
 
 
 window.wasmBindings = bindings;
