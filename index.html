@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHU-JEN LIN | Systems Architect</title>
+    <title>LIN, SHU-JEN | Systems Architect</title>
     
     <link data-trunk rel="copy-dir" href="assets">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,7 +13,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-        /* 升級版動態網格背景 */
         body::before { 
             content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
             background-image: linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
@@ -25,35 +24,35 @@
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
         
-        /* 科技感互動卡片 */
-        .glass { 
-            background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); 
-            border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 12px; 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;
-        }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 12px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
         .glass::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%); transform: rotate(45deg); transition: 0.5s; opacity: 0; }
         .glass:hover { border-color: var(--primary); transform: translateY(-8px); box-shadow: var(--neon); }
         .glass:hover::after { opacity: 1; left: 100%; }
 
-        /* 彈出視窗 (Modal) 樣式 */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 9999; opacity: 0; animation: fadeIn 0.3s forwards;
+        /* --- 新增：打字機動畫 --- */
+        .typing-container { display: inline-block; max-width: 100%; }
+        .typing {
+            overflow: hidden; border-right: .15em solid var(--accent);
+            white-space: nowrap; margin: 0 auto; letter-spacing: .05em;
+            animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite;
         }
-        .modal-content {
-            max-width: 90vw; max-height: 90vh; border: 2px solid var(--primary);
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); border-radius: 8px;
-            position: relative; transform: scale(0.9); animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
+
+        /* --- 新增：導覽列 RWD 響應式佈局 --- */
+        .desktop-nav { display: flex; gap: 30px; align-items: center; }
+        .mobile-btn { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; z-index: 1001; }
+        
+        @media (max-width: 768px) {
+            .desktop-nav { display: none; }
+            .mobile-btn { display: block; }
         }
-        .modal-close {
-            position: absolute; top: -20px; right: -20px; width: 40px; height: 40px;
-            background: var(--primary); color: #fff; border: none; border-radius: 50%;
-            font-size: 1.5rem; cursor: pointer; font-weight: bold; box-shadow: var(--neon);
-        }
-        @keyframes fadeIn { to { opacity: 1; } }
-        @keyframes popIn { to { transform: scale(1); } }
+
+        /* 彈出視窗 (Modal) */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 9999; opacity: 0; animation: fadeIn 0.3s forwards; }
+        .modal-content { max-width: 90vw; max-height: 90vh; border: 2px solid var(--primary); box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); border-radius: 8px; position: relative; transform: scale(0.9); animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        .modal-close { position: absolute; top: -20px; right: -20px; width: 40px; height: 40px; background: var(--primary); color: #fff; border: none; border-radius: 50%; font-size: 1.5rem; cursor: pointer; font-weight: bold; box-shadow: var(--neon); }
+        @keyframes fadeIn { to { opacity: 1; } } @keyframes popIn { to { transform: scale(1); } }
     </style>
 </head>
 <body></body>
