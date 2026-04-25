@@ -12,8 +12,21 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
     let tag_style = "font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); border: 1px solid var(--accent); padding: 3px 8px; border-radius: 4px; width: fit-content;";
     let link_btn = "margin-top: auto; display: inline-block; background: rgba(59, 130, 246, 0.1); color: var(--primary); border: 1px solid var(--primary); padding: 8px 16px; border-radius: 4px; text-decoration: none; font-family: 'JetBrains Mono'; font-size: 0.8rem; font-weight: bold; transition: 0.3s; text-align: center; cursor: pointer;";
 
+    // 將彈出視窗抽離，徹底避開 html! 對 if let 解析的地雷
+    let modal = if let Some(img_src) = (*preview_img).clone() {
+        html! {
+            <div class="modal-overlay" onclick={close_modal.clone()}>
+                <div class="modal-content" onclick={Callback::from(|e: MouseEvent| e.stop_propagation())}>
+                    <button class="modal-close" onclick={close_modal}>{ "×" }</button>
+                    <img src={img_src} alt="Preview" style="max-width: 100%; max-height: 85vh; border-radius: 6px; display: block;" />
+                </div>
+            </div>
+        }
+    } else {
+        html! {}
+    };
+
     html! {
-        // 加上了這對空標籤，包住整個頁面與彈出視窗
         <>
             <div class="container" style="padding: 100px 24px;">
                 <h2 style="font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 900; margin-bottom: 50px; letter-spacing: -2px; text-align: center;">
@@ -57,15 +70,7 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
                     </div>
                 </div>
             </div>
-
-            if let Some(img_src) = (*preview_img).clone() {
-                <div class="modal-overlay" onclick={close_modal.clone()}>
-                    <div class="modal-content" onclick={Callback::from(|e: MouseEvent| e.stop_propagation())}>
-                        <button class="modal-close" onclick={close_modal}>{ "×" }</button>
-                        <img src={img_src} alt="Preview" style="max-width: 100%; max-height: 85vh; border-radius: 6px; display: block;" />
-                    </div>
-                </div>
-            }
+            { modal }
         </>
     }
 }

@@ -26,15 +26,17 @@ pub fn nav(props: &NavProps) -> Html {
     html! {
         <>
             <nav style={nav_bg}>
-                <Link<Route> to={Route::Home} style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="assets/brand_logo.png" alt="NVIDIA x NCHU x MSI" style="height: 45px; width: auto; object-fit: contain; cursor: pointer; transform: scale(1.8); transform-origin: left center;" />
-                </Link<Route>>
+                /* 移除了 Link 上的 style 屬性，改用外層 div 包裝，避免編譯崩潰 */
+                <div style="display: flex; align-items: center;">
+                    <Link<Route> to={Route::Home}>
+                        <img src="assets/brand_logo.png" alt="NVIDIA x NCHU x MSI" style="height: 45px; width: auto; object-fit: contain; cursor: pointer; transform: scale(1.8); transform-origin: left center;" />
+                    </Link<Route>>
+                </div>
 
                 <div class="desktop-nav">
                     <Link<Route> to={Route::Home}><span style={link_css}>{ if is_en { "/HOME" } else { "/首頁" } }</span></Link<Route>>
                     <Link<Route> to={Route::Projects}><span style={link_css}>{ if is_en { "/PROJECTS" } else { "/專案" } }</span></Link<Route>>
                     <Link<Route> to={Route::Cv}><span style={link_css}>{ if is_en { "/CV" } else { "/歷程" } }</span></Link<Route>>
-                    /* 這裡明確改為 CERTIFICATES */
                     <Link<Route> to={Route::Certificates}><span style={link_css}>{ if is_en { "/CERTIFICATES" } else { "/證照" } }</span></Link<Route>>
                     <Link<Route> to={Route::Contact}><span style={link_css}>{ if is_en { "/CONTACT" } else { "/聯絡" } }</span></Link<Route>>
                     <button onclick={props.on_toggle.clone()} style="background: var(--primary); border: none; color: #fff; padding: 4px 12px; border-radius: 4px; font-weight: 900; cursor: pointer; transition: 0.3s;">{ if is_en { "ZH" } else { "EN" } }</button>
@@ -52,7 +54,6 @@ pub fn nav(props: &NavProps) -> Html {
                 <Link<Route> to={Route::Home}><div onclick={close_menu.clone()} style={mobile_link_css}>{ if is_en { "HOME" } else { "首頁" } }</div></Link<Route>>
                 <Link<Route> to={Route::Projects}><div onclick={close_menu.clone()} style={mobile_link_css}>{ if is_en { "PROJECTS" } else { "專案" } }</div></Link<Route>>
                 <Link<Route> to={Route::Cv}><div onclick={close_menu.clone()} style={mobile_link_css}>{ if is_en { "CV" } else { "歷程" } }</div></Link<Route>>
-                /* 手機版這裡也明確改為 CERTIFICATES */
                 <Link<Route> to={Route::Certificates}><div onclick={close_menu.clone()} style={mobile_link_css}>{ if is_en { "CERTIFICATES" } else { "證照" } }</div></Link<Route>>
                 <Link<Route> to={Route::Contact}><div onclick={close_menu.clone()} style={mobile_link_css}>{ if is_en { "CONTACT" } else { "聯絡" } }</div></Link<Route>>
                 
