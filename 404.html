@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIN, SHU-JEN | Systems Architect</title>
     
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #3b82f6; --accent: #10b981; --bg: #030303; --text: #f0f0f0; --neon: 0 0 10px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3); }
+        :root { --primary: #3b82f6; --accent: #10b981; --bg: #030303; --text: #f0f0f0; --neon: 0 0 10px rgba(59, 130, 246, 0.4); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
@@ -19,46 +18,41 @@
             background-size: 50px 50px; z-index: -2; 
         }
 
-        .page-transition { animation: pageFade 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-        @keyframes pageFade { from { opacity: 0; transform: translateY(15px); filter: blur(5px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        
-        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 12px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
-        .glass::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%); transform: rotate(45deg); transition: 0.5s; opacity: 0; }
-        .glass:hover { border-color: var(--primary); transform: translateY(-8px); box-shadow: var(--neon); }
-        .glass:hover::after { opacity: 1; left: 100%; }
-
-        /* --- 新增：打字機動畫 --- */
-        .typing-container { display: inline-block; max-width: 100%; }
-        .typing {
-            overflow: hidden; border-right: .15em solid var(--accent);
-            white-space: nowrap; margin: 0 auto; letter-spacing: .05em;
-            animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite;
+        /* 修正標題溢出：動態縮放與換行 */
+        h2 {
+            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            text-transform: uppercase;
         }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
 
-        /* --- 新增：導覽列 RWD 響應式佈局 --- */
-        .desktop-nav { display: flex; gap: 30px; align-items: center; }
-        .mobile-btn { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; z-index: 1001; }
+        .page-transition { animation: pageFade 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        @keyframes pageFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 12px; transition: 0.3s; }
+        .glass:hover { border-color: var(--primary); box-shadow: var(--neon); }
+
+        .desktop-nav { display: flex; gap: 25px; align-items: center; }
+        .mobile-btn { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; z-index: 1001; }
         
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
             .desktop-nav { display: none; }
             .mobile-btn { display: block; }
         }
 
-        /* 彈出視窗 (Modal) */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 9999; opacity: 0; animation: fadeIn 0.3s forwards; }
-        .modal-content { max-width: 90vw; max-height: 90vh; border: 2px solid var(--primary); box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); border-radius: 8px; position: relative; transform: scale(0.9); animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        .modal-close { position: absolute; top: -20px; right: -20px; width: 40px; height: 40px; background: var(--primary); color: #fff; border: none; border-radius: 50%; font-size: 1.5rem; cursor: pointer; font-weight: bold; box-shadow: var(--neon); }
-        @keyframes fadeIn { to { opacity: 1; } } @keyframes popIn { to { transform: scale(1); } }
+        .typing { overflow: hidden; border-right: .15em solid var(--accent); white-space: nowrap; animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite; }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
     </style>
-<link rel="modulepreload" href="/rust-portfolio/rust-portfolio-27c5e2b72bbc304.js" crossorigin="anonymous" integrity="sha384-p+m4lEAYUcz1VWr0hI7U52aKXE27EB3IXRQxsKD2CxqPSvzRktMck6YiKOyj25db"><link rel="preload" href="/rust-portfolio/rust-portfolio-27c5e2b72bbc304_bg.wasm" crossorigin="anonymous" integrity="sha384-u7RPMG+y4ufoUKLwrXfNtSsKj3HjYRy8AylwHZ573ySURvthcqUbUTX2DtGDsiIL" as="fetch" type="application/wasm"></head>
+<link rel="modulepreload" href="/rust-portfolio/rust-portfolio-18a1e651254829eb.js" crossorigin="anonymous" integrity="sha384-pMvJG5IO/litjHXG36M1TKoWK38uUf2ahi6QoYgDUniw7zYql6FQeO/hqCnoBseg"><link rel="preload" href="/rust-portfolio/rust-portfolio-18a1e651254829eb_bg.wasm" crossorigin="anonymous" integrity="sha384-k7qGBPHNlxmdpkQbqMJjlZP47mdxU4isDc0oZrnvBgzaRvIY/vrf8jbZQVHeR8WE" as="fetch" type="application/wasm"></head>
 <body>
 <script type="module">
-import init, * as bindings from '/rust-portfolio/rust-portfolio-27c5e2b72bbc304.js';
-const wasm = await init({ module_or_path: '/rust-portfolio/rust-portfolio-27c5e2b72bbc304_bg.wasm' });
+import init, * as bindings from '/rust-portfolio/rust-portfolio-18a1e651254829eb.js';
+const wasm = await init({ module_or_path: '/rust-portfolio/rust-portfolio-18a1e651254829eb_bg.wasm' });
 
 
 window.wasmBindings = bindings;
