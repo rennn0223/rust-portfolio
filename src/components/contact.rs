@@ -14,6 +14,7 @@ pub fn contact(props: &super::home::PageProps) -> Html {
                 <div style="font-family: 'JetBrains Mono'; color: var(--accent); margin-bottom: 10px; font-size: 0.8rem;">{ "> INITIALIZING_COMMUNICATION_PROTOCOL..." }</div>
                 
                 <a href="mailto:ren910223@gmail.com" style={link_style}>{ "[ EMAIL: ren910223@gmail.com ]" }</a>
+                <a href="https://www.linkedin.com/in/rennn223" target="_blank" style={link_style}>{ "[ LINKEDIN: rennn223 ]" }</a>
                 <a href="https://github.com/rennn0223" target="_blank" style={link_style}>{ "[ GITHUB: rennn0223 ]" }</a>
                 <a href="tel:+886902235732" style={link_style}>{ "[ PHONE: +886-902-235-732 ]" }</a>
                 <a href="https://s.blinq.me/cmnyeijmz02j70bs6uy3t9kdz?bs=icl" target="_blank" style={link_style}>{ "[ BLINQ: DIGITAL_CARD ]" }</a>

@@ -14,9 +14,13 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
 
     html! {
         <div class="container" style="padding: 100px 24px;">
-            <h2>{ if is_en { "SYSTEM_CREDENTIALS" } else { "專業認證與授權" } }</h2>
+            <h2 style="font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 900; letter-spacing: -2px; overflow-wrap: break-word; word-break: break-word; line-height: 1.1; margin-bottom: 50px; text-transform: uppercase; text-align: center;">
+                { if is_en { "SYSTEM_CREDENTIALS" } else { "專業認證與授權" } }
+            </h2>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                
+                /* NVIDIA DLI 1 */
                 <div class={card_class} style={card_style}>
                     <span style={tag_style}>{ "NVIDIA_DLI" }</span>
                     <h3 style="font-size: 1.4rem; font-weight: 900;">{ "Isaac for Accelerated Robotics" }</h3>
@@ -24,6 +28,7 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
                     <a href="https://learn.nvidia.com/certificates?id=AOuaSDlrRjSNIw37SgD1VQ" target="_blank" style={link_btn}>{ if is_en { "> VERIFY_CREDENTIAL" } else { "> 官方系統驗證" } }</a>
                 </div>
 
+                /* NVIDIA DLI 2 */
                 <div class={card_class} style={card_style}>
                     <span style={tag_style}>{ "NVIDIA_DLI" }</span>
                     <h3 style="font-size: 1.4rem; font-weight: 900;">{ "OpenUSD: Stages, Prims & Attributes" }</h3>
@@ -31,6 +36,7 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
                     <a href="https://learn.nvidia.com/certificates?id=1DHB-ztRROWGqdjyu6qqTQ" target="_blank" style={link_btn}>{ if is_en { "> VERIFY_CREDENTIAL" } else { "> 官方系統驗證" } }</a>
                 </div>
 
+                /* NVIDIA DLI 3 */
                 <div class={card_class} style={card_style}>
                     <span style={tag_style}>{ "NVIDIA_DLI" }</span>
                     <h3 style="font-size: 1.4rem; font-weight: 900;">{ "AI on Jetson Nano" }</h3>
@@ -38,6 +44,7 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
                     <a href="https://learn.nvidia.com/certificates?id=EN5-FdNJT_KR9akW3bacrg" target="_blank" style={link_btn}>{ if is_en { "> VERIFY_CREDENTIAL" } else { "> 官方系統驗證" } }</a>
                 </div>
 
+                /* Duolingo */
                 <div class={card_class} style={card_style}>
                     <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #f59e0b; border: 1px solid #f59e0b; padding: 3px 8px; border-radius: 4px; width: fit-content;">{ "LANGUAGE_PRO" }</span>
                     <h3 style="font-size: 1.4rem; font-weight: 900;">{ "Duolingo English Test" }</h3>
@@ -45,10 +52,12 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
                     <a href="https://certs.duolingo.com/tlegwwbno75h9itb" target="_blank" style={link_btn}>{ if is_en { "> VIEW_CERTIFICATE" } else { "> 查看成績證明" } }</a>
                 </div>
 
+                /* DJI Drone (Modal Preview) */
                 <div class={card_class} style={card_style}>
                     <span style={tag_style}>{ "HARDWARE_OP" }</span>
                     <h3 style="font-size: 1.4rem; font-weight: 900;">{ "DJI Drone Professional Training" }</h3>
                     <p style="color: #aaa; font-size: 0.9rem;">{ if is_en { "Certified operational proficiency for commercial UAV deployment." } else { "大疆專業無人機操作培訓，具備商用無人機部署與操作能力。" } }</p>
+                    /* 這裡目前暫時代入 GTC 照片，之後如果有大疆證書照片，請放入 assets 並修改路徑 */
                     <button onclick={{ let preview_img = preview_img.clone(); Callback::from(move |_| preview_img.set(Some("assets/GTC2026.jpeg".to_string()))) }} style={link_btn}>{ if is_en { "[ ] PREVIEW_DOCUMENT" } else { "[ ] 預覽授權文件" } }</button>
                 </div>
             </div>
