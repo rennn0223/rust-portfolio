@@ -21,17 +21,15 @@ pub fn nav(props: &NavProps) -> Html {
         "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3, 3, 3, 0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; z-index: 999; transition: 0.4s; opacity: 0; pointer-events: none;"
     };
 
-    let mobile_link_css = "font-size: clamp(1.5rem, 6vw, 2rem); font-weight: 900; color: #fff; letter-spacing: 4px; transition: 0.3s;";
+    let mobile_link_css = "font-size: clamp(1.5rem, 6vw, 2rem); font-weight: 900; color: #fff; letter-spacing: 4px; transition: 0.3s; text-decoration: none;";
 
     html! {
         <>
             <nav style={nav_bg}>
-                /* 專業雙層聯合品牌 Logo */
-                <Link<Route> to={Route::Home} style="text-decoration: none;">
-                    <div style="display: flex; flex-direction: column; cursor: pointer;">
-                        <span style="font-family: 'JetBrains Mono'; font-weight: 900; color: var(--text); font-size: 1.1rem; letter-spacing: 1px;">{ "LIN, S.J." }</span>
-                        <span style="font-family: 'JetBrains Mono'; font-weight: 700; color: var(--primary); font-size: 0.55rem; letter-spacing: 2px;">{ "NVIDIA x MSI x NCHU" }</span>
-                    </div>
+                /* 左側：移除名字，換成你提供的聯合 Logo */
+                <Link<Route> to={Route::Home}>
+                    /* 這裡已經為你的聯合 Logo 留好位置，請將圖檔命名為 brand_logo.png */
+                    <img src="assets/brand_logo.png" alt="NVIDIA x MSI x NCHU" style="height: 35px; object-fit: contain; cursor: pointer;" />
                 </Link<Route>>
 
                 <div class="desktop-nav">
@@ -47,7 +45,7 @@ pub fn nav(props: &NavProps) -> Html {
             </nav>
 
             <div style={mobile_menu_css}>
-                /* 手機版：大頭貼與專業標頭 */
+                /* 手機版選單：修正了大頭貼的副檔名為 .jpg */
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 10px;">
                     <img src="assets/profile.jpg" alt="Profile Avatar" style="width: 90px; height: 90px; border-radius: 50%; border: 2px solid var(--primary); box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); object-fit: cover;" />
                     <div style="font-family: 'JetBrains Mono'; font-weight: 900; color: var(--primary); font-size: 0.8rem; letter-spacing: 2px; text-align: center;">
