@@ -1,13 +1,6 @@
 [build]
 target = "index.html"
-# 這裡必須對應你的倉庫名稱
 public_url = "/rust-portfolio/"
 
 [serve]
 port = 8080
-
-# 這是讓圖片顯示的核心指令
-[[hooks]]
-stage = "post_build"
-command = "sh"
-command_arguments = ["-c", "cp -r assets dist/"]

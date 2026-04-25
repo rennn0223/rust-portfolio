@@ -25,6 +25,7 @@ fn switch(routes: Route, lang: Language) -> Html {
         Route::Cv => html! { <Cv {lang} /> },
         Route::NotFound => html! { <Home {lang} /> },
     };
+    // 強制套用進場動畫
     html! { <div class="page-transition">{ content }</div> }
 }
 
