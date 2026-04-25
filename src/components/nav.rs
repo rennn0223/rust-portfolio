@@ -73,7 +73,7 @@ pub fn nav(props: &NavProps) -> Html {
             <div style={mobile_menu_css}>
                 /* 選單頂部：大頭貼與聯合 Logo */
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 10px;">
-                    <img src="assets/profile.jpeg" alt="Profile" style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--primary); box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); object-fit: cover;" />
+                    <img src="assets/profile.jpg" alt="Profile" style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--primary); box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); object-fit: cover;" />
                     <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
                         <img src="assets/nvidia.png" alt="NVIDIA" style="height: 18px; filter: brightness(0) invert(1);" />
                         <img src="assets/nchu.png" alt="NCHU" style="height: 18px; filter: brightness(0) invert(1);" />
