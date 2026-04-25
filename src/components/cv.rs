@@ -16,7 +16,7 @@ pub fn cv(props: &super::home::PageProps) -> Html {
                 <a href="https://certs.duolingo.com/tlegwwbno75h9itb" target="_blank" style={btn_style}>{ "DUOLINGO_ENGLISH_PRO ↗" }</a>
             </div>
 
-            <h2 style="font-size: 3rem; font-weight: 900; margin-bottom: 60px;">{ if is_en { "SYSTEM_TIMELINE" } else { "精確任務時間軸" } }</h2>
+            <h2 style="font-size: 3rem; font-weight: 900; margin-bottom: 60px;">{ if is_en { "TIMELINE" } else { "精確任務時間軸" } }</h2>
             
             <div style="max-width: 900px;">
                 /* Phase 6 */

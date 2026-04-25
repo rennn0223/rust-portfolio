@@ -41,7 +41,7 @@ pub fn nav(props: &NavProps) -> Html {
             <nav style={nav_bg}>
                 /* 左側 Logo (可點擊回首頁) */
                 <Link<Route> to={Route::Home} classes={classes!("nav-logo")}>
-                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 900; color: var(--primary); font-size: 1.2rem; cursor: pointer;">{ "SJ_LIN" }</span>
+                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 900; color: var(--primary); font-size: 1.2rem; cursor: pointer;">{ "HOME" }</span>
                 </Link<Route>>
 
                 /* 電腦版選單 (Desktop) */
