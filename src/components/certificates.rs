@@ -13,45 +13,48 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
     let link_btn = "margin-top: auto; display: inline-block; background: rgba(59, 130, 246, 0.1); color: var(--primary); border: 1px solid var(--primary); padding: 8px 16px; border-radius: 4px; text-decoration: none; font-family: 'JetBrains Mono'; font-size: 0.8rem; font-weight: bold; transition: 0.3s; text-align: center; cursor: pointer;";
 
     html! {
-        <div class="container" style="padding: 100px 24px;">
-            <h2 style="font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 900; margin-bottom: 50px; letter-spacing: -2px; text-align: center;">
-                { if is_en { "SYSTEM_CERTIFICATES" } else { "專業認證與授權" } }
-            </h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-                <div class={card_class} style={card_style}>
-                    <span style={tag_style}>{ "NVIDIA_DLI" }</span>
-                    <h3 style="font-size: 1.4rem; font-weight: 900;">{ "Isaac for Accelerated Robotics" }</h3>
-                    <p style="color: #aaa; font-size: 0.9rem;">{ if is_en { "Official certification for deploying AI robotics workflows using NVIDIA Isaac." } else { "NVIDIA 官方認證，掌握使用 Isaac 部署 AI 機器人工作流之核心能力。" } }</p>
-                    <a href="https://learn.nvidia.com/certificates?id=AOuaSDlrRjSNIw37SgD1VQ" target="_blank" style={link_btn}>{ if is_en { "> VERIFY_CERTIFICATE" } else { "> 官方系統驗證" } }</a>
-                </div>
+        // 加上了這對空標籤，包住整個頁面與彈出視窗
+        <>
+            <div class="container" style="padding: 100px 24px;">
+                <h2 style="font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 900; margin-bottom: 50px; letter-spacing: -2px; text-align: center;">
+                    { if is_en { "SYSTEM_CERTIFICATES" } else { "專業認證與授權" } }
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                    <div class={card_class} style={card_style}>
+                        <span style={tag_style}>{ "NVIDIA_DLI" }</span>
+                        <h3 style="font-size: 1.4rem; font-weight: 900;">{ "Isaac for Accelerated Robotics" }</h3>
+                        <p style="color: #aaa; font-size: 0.9rem;">{ if is_en { "Official certification for deploying AI robotics workflows using NVIDIA Isaac." } else { "NVIDIA 官方認證，掌握使用 Isaac 部署 AI 機器人工作流之核心能力。" } }</p>
+                        <a href="https://learn.nvidia.com/certificates?id=AOuaSDlrRjSNIw37SgD1VQ" target="_blank" style={link_btn}>{ if is_en { "> VERIFY_CERTIFICATE" } else { "> 官方系統驗證" } }</a>
+                    </div>
 
-                <div class={card_class} style={card_style}>
-                    <span style={tag_style}>{ "NVIDIA_DLI" }</span>
-                    <h3 style="font-size: 1.4rem; font-weight: 900;">{ "OpenUSD: Stages, Prims & Attributes" }</h3>
-                    <p style="color: #aaa; font-size: 0.9rem;">{ if is_en { "Mastery of Universal Scene Description for Omniverse Digital Twin environments." } else { "精通通用場景描述 (USD)，用於建構 Omniverse 數位孿生底層環境。" } }</p>
-                    <a href="https://learn.nvidia.com/certificates?id=1DHB-ztRROWGqdjyu6qqTQ" target="_blank" style={link_btn}>{ if is_en { "> VERIFY_CERTIFICATE" } else { "> 官方系統驗證" } }</a>
-                </div>
+                    <div class={card_class} style={card_style}>
+                        <span style={tag_style}>{ "NVIDIA_DLI" }</span>
+                        <h3 style="font-size: 1.4rem; font-weight: 900;">{ "OpenUSD: Stages, Prims & Attributes" }</h3>
+                        <p style="color: #aaa; font-size: 0.9rem;">{ if is_en { "Mastery of Universal Scene Description for Omniverse Digital Twin environments." } else { "精通通用場景描述 (USD)，用於建構 Omniverse 數位孿生底層環境。" } }</p>
+                        <a href="https://learn.nvidia.com/certificates?id=1DHB-ztRROWGqdjyu6qqTQ" target="_blank" style={link_btn}>{ if is_en { "> VERIFY_CERTIFICATE" } else { "> 官方系統驗證" } }</a>
+                    </div>
 
-                <div class={card_class} style={card_style}>
-                    <span style={tag_style}>{ "NVIDIA_DLI" }</span>
-                    <h3 style="font-size: 1.4rem; font-weight: 900;">{ "AI on Jetson Nano" }</h3>
-                    <p style="color: #aaa; font-size: 0.9rem;">{ if is_en { "Deployment of deep learning models on Edge AI hardware architectures." } else { "具備在 Edge AI 邊緣硬體架構上部署深度學習模型之能力。" } }</p>
-                    <a href="https://learn.nvidia.com/certificates?id=EN5-FdNJT_KR9akW3bacrg" target="_blank" style={link_btn}>{ if is_en { "> VERIFY_CERTIFICATE" } else { "> 官方系統驗證" } }</a>
-                </div>
+                    <div class={card_class} style={card_style}>
+                        <span style={tag_style}>{ "NVIDIA_DLI" }</span>
+                        <h3 style="font-size: 1.4rem; font-weight: 900;">{ "AI on Jetson Nano" }</h3>
+                        <p style="color: #aaa; font-size: 0.9rem;">{ if is_en { "Deployment of deep learning models on Edge AI hardware architectures." } else { "具備在 Edge AI 邊緣硬體架構上部署深度學習模型之能力。" } }</p>
+                        <a href="https://learn.nvidia.com/certificates?id=EN5-FdNJT_KR9akW3bacrg" target="_blank" style={link_btn}>{ if is_en { "> VERIFY_CERTIFICATE" } else { "> 官方系統驗證" } }</a>
+                    </div>
 
-                <div class={card_class} style={card_style}>
-                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #f59e0b; border: 1px solid #f59e0b; padding: 3px 8px; border-radius: 4px; width: fit-content;">{ "LANGUAGE_PRO" }</span>
-                    <h3 style="font-size: 1.4rem; font-weight: 900;">{ "Duolingo English Test" }</h3>
-                    <p style="color: #aaa; font-size: 0.9rem;">{ if is_en { "Certified English proficiency for international technical communication." } else { "國際英語能力認證，具備流暢的跨國技術溝通能力。" } }</p>
-                    <a href="https://certs.duolingo.com/tlegwwbno75h9itb" target="_blank" style={link_btn}>{ if is_en { "> VIEW_SCORE_REPORT" } else { "> 查看成績證明" } }</a>
-                </div>
+                    <div class={card_class} style={card_style}>
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #f59e0b; border: 1px solid #f59e0b; padding: 3px 8px; border-radius: 4px; width: fit-content;">{ "LANGUAGE_PRO" }</span>
+                        <h3 style="font-size: 1.4rem; font-weight: 900;">{ "Duolingo English Test" }</h3>
+                        <p style="color: #aaa; font-size: 0.9rem;">{ if is_en { "Certified English proficiency for international technical communication." } else { "國際英語能力認證，具備流暢的跨國技術溝通能力。" } }</p>
+                        <a href="https://certs.duolingo.com/tlegwwbno75h9itb" target="_blank" style={link_btn}>{ if is_en { "> VIEW_SCORE_REPORT" } else { "> 查看成績證明" } }</a>
+                    </div>
 
-                <div class={card_class} style={card_style}>
-                    <span style={tag_style}>{ "HARDWARE_OP" }</span>
-                    <h3 style="font-size: 1.4rem; font-weight: 900;">{ "DJI Drone Professional Training" }</h3>
-                    <p style="color: #aaa; font-size: 0.9rem;">{ if is_en { "Certified operational proficiency for commercial UAV deployment." } else { "大疆專業無人機操作培訓，具備商用無人機部署與操作能力。" } }</p>
-                    <button onclick={{ let preview_img = preview_img.clone(); Callback::from(move |_| preview_img.set(Some("assets/GTC2026.jpeg".to_string()))) }} style={link_btn}>{ if is_en { "[ ] PREVIEW_DOCUMENT" } else { "[ ] 預覽授權文件" } }</button>
+                    <div class={card_class} style={card_style}>
+                        <span style={tag_style}>{ "HARDWARE_OP" }</span>
+                        <h3 style="font-size: 1.4rem; font-weight: 900;">{ "DJI Drone Professional Training" }</h3>
+                        <p style="color: #aaa; font-size: 0.9rem;">{ if is_en { "Certified operational proficiency for commercial UAV deployment." } else { "大疆專業無人機操作培訓，具備商用無人機部署與操作能力。" } }</p>
+                        <button onclick={{ let preview_img = preview_img.clone(); Callback::from(move |_| preview_img.set(Some("assets/GTC2026.jpeg".to_string()))) }} style={link_btn}>{ if is_en { "[ ] PREVIEW_DOCUMENT" } else { "[ ] 預覽授權文件" } }</button>
+                    </div>
                 </div>
             </div>
 
@@ -63,6 +66,6 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
                     </div>
                 </div>
             }
-        </div>
+        </>
     }
 }
