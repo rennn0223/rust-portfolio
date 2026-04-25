@@ -6,12 +6,14 @@ use components::nav::Nav;
 use components::home::Home;
 use components::projects::Projects;
 use components::cv::Cv;
+use components::certificates::Certificates; // 新增這行
 
 #[derive(Clone, Routable, PartialEq)]
 pub enum Route {
     #[at("/")] Home,
     #[at("/projects")] Projects,
     #[at("/cv")] Cv,
+    #[at("/certs")] Certificates, // 新增這行
     #[not_found] #[at("/404")] NotFound,
 }
 
@@ -23,9 +25,9 @@ fn switch(routes: Route, lang: Language) -> Html {
         Route::Home => html! { <Home {lang} /> },
         Route::Projects => html! { <Projects {lang} /> },
         Route::Cv => html! { <Cv {lang} /> },
+        Route::Certificates => html! { <Certificates {lang} /> }, // 新增這行
         Route::NotFound => html! { <Home {lang} /> },
     };
-    // 強制套用進場動畫
     html! { <div class="page-transition">{ content }</div> }
 }
 

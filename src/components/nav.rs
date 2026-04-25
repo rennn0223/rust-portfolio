@@ -16,6 +16,7 @@ pub fn nav(props: &NavProps) -> Html {
             <Link<Route> to={Route::Home}><span style={link_css}>{ if is_en { "/HOME" } else { "/首頁" } }</span></Link<Route>>
             <Link<Route> to={Route::Projects}><span style={link_css}>{ if is_en { "/PROJECTS" } else { "/專案" } }</span></Link<Route>>
             <Link<Route> to={Route::Cv}><span style={link_css}>{ if is_en { "/CV" } else { "/歷程" } }</span></Link<Route>>
+	    <Link<Route> to={Route::Certificates}><span style={link_css}>{ if is_en { "/CREDENTIALS" } else { "/專業認證" } }</span></Link<Route>>
             <button onclick={props.on_toggle.clone()} style="margin-left: auto; background: var(--primary); color: #fff; border: none; padding: 6px 16px; border-radius: 4px; font-weight: 900; font-size: 0.75rem; cursor: pointer;">
                 { if is_en { "ZH" } else { "EN" } }
             </button>
