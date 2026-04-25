@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIN, SHU-JEN | Systems Architect</title>
     
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -18,61 +19,40 @@
             background-size: 50px 50px; z-index: -2; 
         }
 
-        /* 修正標題溢出：動態縮放與換行 */
-        h2 {
-            font-size: clamp(1.8rem, 8vw, 3.5rem);
-            font-weight: 900;
-            letter-spacing: -2px;
-            overflow-wrap: break-word;
-            word-break: break-word;
-            line-height: 1.1;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-        }
+        h2 { font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 900; letter-spacing: -2px; overflow-wrap: break-word; word-break: break-word; line-height: 1.1; margin-bottom: 50px; text-transform: uppercase; text-align: center; }
 
         .page-transition { animation: pageFade 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-        @keyframes pageFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* 終極修復：結尾使用 transform: none; 釋放 Modal 的定位限制 */
+        @keyframes pageFade { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: none; filter: none; } 
+        }
 
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
         .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 12px; transition: 0.3s; }
-        .glass:hover { border-color: var(--primary); box-shadow: var(--neon); }
+        .glass:hover { border-color: var(--primary); box-shadow: var(--neon); transform: translateY(-5px); }
 
         .desktop-nav { display: flex; gap: 25px; align-items: center; }
         .mobile-btn { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; z-index: 1001; }
-        
-        @media (max-width: 850px) {
-            .desktop-nav { display: none; }
-            .mobile-btn { display: block; }
-        }
+        @media (max-width: 850px) { .desktop-nav { display: none; } .mobile-btn { display: block; } }
 
-        ./* --- 修正版打字機動畫 --- */
-        .typing-container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-        .typing {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid var(--accent);
-            max-width: 0; /* 起始狀態隱藏 */
-            /* 延遲 0.5 秒開始，打字 2 秒，保持最後狀態 forwards */
-            animation: typing 2s steps(40, end) 0.5s forwards, blink-caret .75s step-end infinite;
-        }
-        @keyframes typing {
-            from { max-width: 0; }
-            to { max-width: 100vw; } /* 展開到最大內容寬度 */
-        }
-        @keyframes blink-caret { 
-            from, to { border-color: transparent } 
-            50% { border-color: var(--accent); } 
-        }
+        .typing-container { display: flex; justify-content: center; width: 100%; }
+        .typing { display: inline-block; overflow: hidden; white-space: nowrap; border-right: 3px solid var(--accent); max-width: 0; animation: typing 2s steps(40, end) 0.5s forwards, blink-caret .75s step-end infinite; }
+        @keyframes typing { from { max-width: 0; } to { max-width: 100vw; } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
+
+        /* Modal 修復為嚴格鎖定螢幕 */
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 99999; opacity: 0; animation: fadeIn 0.3s forwards; }
+        .modal-content { max-width: 95vw; max-height: 90vh; border: 2px solid var(--primary); box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); border-radius: 8px; position: relative; transform: scale(0.9); animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        .modal-close { position: absolute; top: -15px; right: -15px; width: 35px; height: 35px; background: var(--primary); color: #fff; border: none; border-radius: 50%; font-size: 1.2rem; cursor: pointer; font-weight: bold; box-shadow: var(--neon); display: flex; justify-content: center; align-items: center; }
+        @keyframes fadeIn { to { opacity: 1; } } @keyframes popIn { to { transform: scale(1); } }
     </style>
-<link rel="modulepreload" href="/rust-portfolio/rust-portfolio-3adc5e5a9cd4ab58.js" crossorigin="anonymous" integrity="sha384-pMvJG5IO/litjHXG36M1TKoWK38uUf2ahi6QoYgDUniw7zYql6FQeO/hqCnoBseg"><link rel="preload" href="/rust-portfolio/rust-portfolio-3adc5e5a9cd4ab58_bg.wasm" crossorigin="anonymous" integrity="sha384-iEpf72kifgdCDnHHfaYERs5G1FB2LyHo0tCQK5DlEwhJ4f4h2MY1Lg+pg8HguBeL" as="fetch" type="application/wasm"></head>
+<link rel="modulepreload" href="/rust-portfolio/rust-portfolio-e3ffc16f7634b2e1.js" crossorigin="anonymous" integrity="sha384-pMvJG5IO/litjHXG36M1TKoWK38uUf2ahi6QoYgDUniw7zYql6FQeO/hqCnoBseg"><link rel="preload" href="/rust-portfolio/rust-portfolio-e3ffc16f7634b2e1_bg.wasm" crossorigin="anonymous" integrity="sha384-robRhJy9LzB9Ln3NLrXBGjjXgp7kI/+mjlg2xz7hriJYa1UrnbFo7pancjxMaNnM" as="fetch" type="application/wasm"></head>
 <body>
 <script type="module">
-import init, * as bindings from '/rust-portfolio/rust-portfolio-3adc5e5a9cd4ab58.js';
-const wasm = await init({ module_or_path: '/rust-portfolio/rust-portfolio-3adc5e5a9cd4ab58_bg.wasm' });
+import init, * as bindings from '/rust-portfolio/rust-portfolio-e3ffc16f7634b2e1.js';
+const wasm = await init({ module_or_path: '/rust-portfolio/rust-portfolio-e3ffc16f7634b2e1_bg.wasm' });
 
 
 window.wasmBindings = bindings;
