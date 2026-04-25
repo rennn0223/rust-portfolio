@@ -6,14 +6,16 @@ use components::nav::Nav;
 use components::home::Home;
 use components::projects::Projects;
 use components::cv::Cv;
-use components::certificates::Certificates; // 新增這行
+use components::certificates::Certificates;
+use components::contact::Contact; // 新增
 
 #[derive(Clone, Routable, PartialEq)]
 pub enum Route {
     #[at("/")] Home,
     #[at("/projects")] Projects,
     #[at("/cv")] Cv,
-    #[at("/certs")] Certificates, // 新增這行
+    #[at("/certs")] Certificates,
+    #[at("/contact")] Contact, // 新增
     #[not_found] #[at("/404")] NotFound,
 }
 
@@ -25,7 +27,8 @@ fn switch(routes: Route, lang: Language) -> Html {
         Route::Home => html! { <Home {lang} /> },
         Route::Projects => html! { <Projects {lang} /> },
         Route::Cv => html! { <Cv {lang} /> },
-        Route::Certificates => html! { <Certificates {lang} /> }, // 新增這行
+        Route::Certificates => html! { <Certificates {lang} /> },
+        Route::Contact => html! { <Contact {lang} /> }, // 新增
         Route::NotFound => html! { <Home {lang} /> },
     };
     html! { <div class="page-transition">{ content }</div> }
@@ -36,9 +39,7 @@ fn app() -> Html {
     let lang = use_state(|| Language::En);
     let on_toggle = {
         let lang = lang.clone();
-        Callback::from(move |_| {
-            lang.set(if *lang == Language::En { Language::Zh } else { Language::En });
-        })
+        Callback::from(move |_| lang.set(if *lang == Language::En { Language::Zh } else { Language::En }))
     };
 
     html! {
