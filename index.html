@@ -44,9 +44,29 @@
             .mobile-btn { display: block; }
         }
 
-        .typing { overflow: hidden; border-right: .15em solid var(--accent); white-space: nowrap; animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite; }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
+        ./* --- 修正版打字機動畫 --- */
+        .typing-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .typing {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--accent);
+            max-width: 0; /* 起始狀態隱藏 */
+            /* 延遲 0.5 秒開始，打字 2 秒，保持最後狀態 forwards */
+            animation: typing 2s steps(40, end) 0.5s forwards, blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { max-width: 0; }
+            to { max-width: 100vw; } /* 展開到最大內容寬度 */
+        }
+        @keyframes blink-caret { 
+            from, to { border-color: transparent } 
+            50% { border-color: var(--accent); } 
+        }
     </style>
 </head>
 <body></body>
