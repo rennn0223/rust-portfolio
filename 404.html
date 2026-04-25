@@ -44,15 +44,35 @@
             .mobile-btn { display: block; }
         }
 
-        .typing { overflow: hidden; border-right: .15em solid var(--accent); white-space: nowrap; animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite; }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
+        ./* --- 修正版打字機動畫 --- */
+        .typing-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .typing {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--accent);
+            max-width: 0; /* 起始狀態隱藏 */
+            /* 延遲 0.5 秒開始，打字 2 秒，保持最後狀態 forwards */
+            animation: typing 2s steps(40, end) 0.5s forwards, blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { max-width: 0; }
+            to { max-width: 100vw; } /* 展開到最大內容寬度 */
+        }
+        @keyframes blink-caret { 
+            from, to { border-color: transparent } 
+            50% { border-color: var(--accent); } 
+        }
     </style>
-<link rel="modulepreload" href="/rust-portfolio/rust-portfolio-c61f67353c9a54ce.js" crossorigin="anonymous" integrity="sha384-pMvJG5IO/litjHXG36M1TKoWK38uUf2ahi6QoYgDUniw7zYql6FQeO/hqCnoBseg"><link rel="preload" href="/rust-portfolio/rust-portfolio-c61f67353c9a54ce_bg.wasm" crossorigin="anonymous" integrity="sha384-XD8l0i3sFDTZB7pQMqUMgNBFv3n+g475JV0Z8tbg9kqArzbhMRq29ZyGF9xK4FFp" as="fetch" type="application/wasm"></head>
+<link rel="modulepreload" href="/rust-portfolio/rust-portfolio-6392bff4ca68e781.js" crossorigin="anonymous" integrity="sha384-pMvJG5IO/litjHXG36M1TKoWK38uUf2ahi6QoYgDUniw7zYql6FQeO/hqCnoBseg"><link rel="preload" href="/rust-portfolio/rust-portfolio-6392bff4ca68e781_bg.wasm" crossorigin="anonymous" integrity="sha384-ZAJpxbFdZHBjdKDA8EdsVLd6aAwtUITvYmMBvcXfGDq0EFY0ltkCRc3oEu3NKo1w" as="fetch" type="application/wasm"></head>
 <body>
 <script type="module">
-import init, * as bindings from '/rust-portfolio/rust-portfolio-c61f67353c9a54ce.js';
-const wasm = await init({ module_or_path: '/rust-portfolio/rust-portfolio-c61f67353c9a54ce_bg.wasm' });
+import init, * as bindings from '/rust-portfolio/rust-portfolio-6392bff4ca68e781.js';
+const wasm = await init({ module_or_path: '/rust-portfolio/rust-portfolio-6392bff4ca68e781_bg.wasm' });
 
 
 window.wasmBindings = bindings;
