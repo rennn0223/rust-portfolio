@@ -30,7 +30,7 @@ pub fn projects(props: &super::home::PageProps) -> Html {
                 
                 /* 專案 1: GTC 2026 */
                 <div class={card_class} style={card_style}>
-                    <img src="assets/signiture.jpg" alt="Jensen Huang Signature" style={img_style} />
+                    <img src="assets/signiture.jpeg" alt="Jensen Huang Signature" style={img_style} />
                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                         <span style={tag_style}>{ "NVIDIA_GTC" }</span><span style={tag_style}>{ "SIGNATURE" }</span>
                     </div>
@@ -74,7 +74,7 @@ pub fn projects(props: &super::home::PageProps) -> Html {
 
                 /* 專案 3: MSI Collaboration */
                 <div class={card_class} style={card_style}>
-                    <img src="assets/MSI.jpg" alt="MSI Collaboration" style={img_style} />
+                    <img src="assets/MSI.jpeg" alt="MSI Collaboration" style={img_style} />
                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                         <span style={tag_style}>{ "INDUSTRIAL" }</span><span style={tag_style}>{ "OMNIVERSE" }</span>
                     </div>
