@@ -9,12 +9,19 @@ pub struct NavProps { pub lang: Language, pub on_toggle: Callback<MouseEvent> }
 pub fn nav(props: &NavProps) -> Html {
     let is_en = props.lang == Language::En;
     let menu_open = use_state(|| false);
-    let toggle_menu = { let menu_open = menu_open.clone(); Callback::from(move |_| menu_open.set(!*menu_open)) };
-    let close_menu = { let menu_open = menu_open.clone(); Callback::from(move |_| menu_open.set(false)) };
+
+    // 修復：use_callback 讓 toggle_menu / close_menu 在 menu_open handle 不變時
+    // 保持同一個 Callback 引用，避免所有 Link onclick 重新 diff。
+    let toggle_menu = use_callback(menu_open.clone(), |_: MouseEvent, menu_open| {
+        menu_open.set(!**menu_open);
+    });
+    let close_menu = use_callback(menu_open.clone(), |_: MouseEvent, menu_open| {
+        menu_open.set(false);
+    });
 
     let nav_bg = "display: flex; justify-content: space-between; align-items: center; padding: 15px clamp(15px, 4vw, 30px); background: rgba(3,3,3,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); position: fixed; width: 100%; top: 0; z-index: 1000;";
     let link_css = "color: #fff; text-decoration: none; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; opacity: 0.7; transition: 0.3s; cursor: pointer;";
-    
+
     let mobile_menu_css = if *menu_open {
         "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(3, 3, 3, 0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; z-index: 999; transition: 0.4s; opacity: 1; pointer-events: all;"
     } else {
@@ -30,7 +37,6 @@ pub fn nav(props: &NavProps) -> Html {
     html! {
         <>
             <nav style={nav_bg}>
-                /* 移除了 Link 上的 style，保證 100% 不會報錯 */
                 <div style="flex-shrink: 1;">
                     <Link<Route> to={Route::Home}>
                         <div style={logo_container}>
@@ -60,7 +66,6 @@ pub fn nav(props: &NavProps) -> Html {
             <div style={mobile_menu_css}>
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 10px;">
                     <img src="assets/profile.jpg" alt="Profile Avatar" style="width: 90px; height: 90px; border-radius: 50%; border: 2px solid var(--primary); box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); object-fit: cover;" />
-                    
                     <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
                         <img src="assets/nvidia.png" alt="NVIDIA" style="height: 16px; filter: brightness(0) invert(1);" />
                         <span style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">{ "x" }</span>
@@ -75,7 +80,7 @@ pub fn nav(props: &NavProps) -> Html {
                 <Link<Route> to={Route::Cv}><div onclick={close_menu.clone()} style={mobile_link_css}>{ if is_en { "CV" } else { "歷程" } }</div></Link<Route>>
                 <Link<Route> to={Route::Certificates}><div onclick={close_menu.clone()} style={mobile_link_css}>{ if is_en { "CERTIFICATES" } else { "證照" } }</div></Link<Route>>
                 <Link<Route> to={Route::Contact}><div onclick={close_menu.clone()} style={mobile_link_css}>{ if is_en { "CONTACT" } else { "聯絡" } }</div></Link<Route>>
-                
+
                 <button onclick={props.on_toggle.clone()} style="margin-top: 10px; background: transparent; border: 2px solid var(--primary); color: var(--primary); padding: 10px 40px; border-radius: 30px; font-weight: 900; cursor: pointer;">
                     { if is_en { "SWITCH TO 中文" } else { "切換至 ENGLISH" } }
                 </button>

@@ -31,7 +31,7 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
                 <h2 style="font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 900; margin-bottom: 50px; letter-spacing: -2px; text-align: center;">
                     { if is_en { "SYSTEM_CERTIFICATES" } else { "專業認證與授權" } }
                 </h2>
-                
+
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
                     <div class={card_class} style={card_style}>
                         <span style={tag_style}>{ "NVIDIA_DLI" }</span>
@@ -65,12 +65,13 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
                         <span style={tag_style}>{ "HARDWARE_OP" }</span>
                         <h3 style="font-size: 1.4rem; font-weight: 900;">{ "DJI Drone Professional Training" }</h3>
                         <p style="color: #aaa; font-size: 0.9rem;">{ if is_en { "Certified operational proficiency for commercial UAV deployment." } else { "大疆專業無人機操作培訓，具備商用無人機部署與操作能力。" } }</p>
-                        <button onclick={{ let preview_img = preview_img.clone(); Callback::from(move |_| preview_img.set(Some("assets/GTC2026.jpeg".to_string()))) }} style={link_btn}>{ if is_en { "[ ] PREVIEW_DOCUMENT" } else { "[ ] 預覽授權文件" } }</button>
+                        // 修復：原本錯誤地指向 GTC2026.jpeg，已改為正確的 DJI 證書圖片路徑。
+                        // ⚠️ 請將 "assets/dji_cert.jpeg" 替換為你實際的 DJI 證書圖片檔名。
+                        <button onclick={{ let preview_img = preview_img.clone(); Callback::from(move |_| preview_img.set(Some("assets/dji_cert.jpg".to_string()))) }} style={link_btn}>{ if is_en { "[ ] PREVIEW_DOCUMENT" } else { "[ ] 預覽授權文件" } }</button>
                     </div>
                 </div>
             </div>
-            
-            // 彈出視窗已經獨立到動畫容器外，保證完美置中
+
             { modal }
         </>
     }

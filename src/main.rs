@@ -36,16 +36,21 @@ fn switch(routes: Route, lang: Language) -> Html {
 #[function_component(App)]
 fn app() -> Html {
     let lang = use_state(|| Language::En);
-    let on_toggle = {
-        let lang = lang.clone();
-        Callback::from(move |_| lang.set(if *lang == Language::En { Language::Zh } else { Language::En }))
-    };
+
+    // 修復：use_callback 確保 Callback 物件在 lang 不變時保持同一個引用，
+    // 避免 Nav 因為收到新 Callback 而不必要地重新渲染。
+    let on_toggle = use_callback(lang.clone(), |_: MouseEvent, lang| {
+        lang.set(if **lang == Language::En { Language::Zh } else { Language::En });
+    });
+
+    // 修復：Switch 的 render prop 記憶化，lang 不變時 Switch 不會重新掛載子頁面。
+    let switch_fn = use_callback(*lang, |route: Route, lang| switch(route, *lang));
 
     html! {
         <HashRouter>
             <Nav lang={*lang} on_toggle={on_toggle} />
             <main style="padding-top: 80px;">
-                <Switch<Route> render={move |r| switch(r, *lang)} />
+                <Switch<Route> render={switch_fn} />
             </main>
         </HashRouter>
     }
