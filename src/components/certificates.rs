@@ -12,7 +12,6 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
     let tag_style = "font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); border: 1px solid var(--accent); padding: 3px 8px; border-radius: 4px; width: fit-content;";
     let link_btn = "margin-top: auto; display: inline-block; background: rgba(59, 130, 246, 0.1); color: var(--primary); border: 1px solid var(--primary); padding: 8px 16px; border-radius: 4px; text-decoration: none; font-family: 'JetBrains Mono'; font-size: 0.8rem; font-weight: bold; transition: 0.3s; text-align: center; cursor: pointer;";
 
-    // 將彈出視窗抽離，徹底避開 html! 對 if let 解析的地雷
     let modal = if let Some(img_src) = (*preview_img).clone() {
         html! {
             <div class="modal-overlay" onclick={close_modal.clone()}>
@@ -28,7 +27,7 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
 
     html! {
         <>
-            <div class="container" style="padding: 100px 24px;">
+            <div class="container page-transition" style="padding: 100px 24px;">
                 <h2 style="font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 900; margin-bottom: 50px; letter-spacing: -2px; text-align: center;">
                     { if is_en { "SYSTEM_CERTIFICATES" } else { "專業認證與授權" } }
                 </h2>
@@ -70,6 +69,8 @@ pub fn certificates(props: &super::home::PageProps) -> Html {
                     </div>
                 </div>
             </div>
+            
+            // 彈出視窗已經獨立到動畫容器外，保證完美置中
             { modal }
         </>
     }

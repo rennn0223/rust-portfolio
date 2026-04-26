@@ -7,7 +7,7 @@ use components::home::Home;
 use components::projects::Projects;
 use components::cv::Cv;
 use components::certificates::Certificates;
-use components::contact::Contact; // 新增
+use components::contact::Contact;
 
 #[derive(Clone, Routable, PartialEq)]
 pub enum Route {
@@ -15,7 +15,7 @@ pub enum Route {
     #[at("/projects")] Projects,
     #[at("/cv")] Cv,
     #[at("/certs")] Certificates,
-    #[at("/contact")] Contact, // 新增
+    #[at("/contact")] Contact,
     #[not_found] #[at("/404")] NotFound,
 }
 
@@ -23,15 +23,14 @@ pub enum Route {
 pub enum Language { En, Zh }
 
 fn switch(routes: Route, lang: Language) -> Html {
-    let content = match routes {
+    match routes {
         Route::Home => html! { <Home {lang} /> },
         Route::Projects => html! { <Projects {lang} /> },
         Route::Cv => html! { <Cv {lang} /> },
         Route::Certificates => html! { <Certificates {lang} /> },
-        Route::Contact => html! { <Contact {lang} /> }, // 新增
+        Route::Contact => html! { <Contact {lang} /> },
         Route::NotFound => html! { <Home {lang} /> },
-    };
-    html! { <div class="page-transition">{ content }</div> }
+    }
 }
 
 #[function_component(App)]

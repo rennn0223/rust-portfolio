@@ -8,15 +8,12 @@ pub struct PageProps { pub lang: Language }
 pub fn home(props: &PageProps) -> Html {
     let is_en = props.lang == Language::En;
     html! {
-        <div style="min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 24px;">
-            
-            /* 這裡套用修正後的打字機動畫 */
+        <div class="page-transition" style="min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 24px;">
             <div class="typing-container">
                 <div class="typing" style="font-family: 'JetBrains Mono', monospace; color: var(--accent); margin-bottom: 20px; font-size: clamp(0.7rem, 3vw, 0.9rem);">
                     { if is_en { "> INITIALIZING_SYSTEMS_ARCHITECT_CORE_" } else { "> 系統架構師核心已載入_" } }
                 </div>
             </div>
-
             <h1 style="font-size: clamp(3rem, 11vw, 8.5rem); font-weight: 900; letter-spacing: -4px; line-height: 0.9; margin-bottom: 30px; background: linear-gradient(to bottom, #fff 40%, #555 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                 { "LIN,\nSHU-JEN" }
             </h1>

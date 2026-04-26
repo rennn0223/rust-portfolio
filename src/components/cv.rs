@@ -9,7 +9,7 @@ pub fn cv(props: &super::home::PageProps) -> Html {
     let date_style = "color: var(--primary); font-family: 'JetBrains Mono'; font-weight: bold; font-size: 0.95rem; margin-bottom: 5px;";
 
     html! {
-        <div class="container" style="padding: 100px 24px;">
+        <div class="container page-transition" style="padding: 100px 24px;">
             <h2>{ if is_en { "SYSTEM_TIMELINE" } else { "精確任務時間軸" } }</h2>
             
             <div style="max-width: 900px;">
